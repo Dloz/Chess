@@ -10,6 +10,7 @@ namespace ChessDemo {
         static void Main(string[] args) {
             Random random = new Random();
             var chess = new Chess();
+            chess.GetFigureAt("");
             List<string> moves;
             while (true) {
                 moves = chess.GetAllMoves();

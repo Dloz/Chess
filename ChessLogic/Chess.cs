@@ -40,6 +40,12 @@ namespace ChessLogic
             return figure == Figure.none ? '.' : (char)figure;
         }
 
+        public char GetFigureAt(string xy) {
+            var square = new Square(xy);
+            var figure = _board.GetFigureAt(square);
+            return figure == Figure.none ? '.' : (char)figure;
+        }
+
         private void FindAllMoves() {
             allMoves = new List<FigureMoving>();
             foreach (var fs in _board.YieldFigures()) {
