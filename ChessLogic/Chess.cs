@@ -21,7 +21,7 @@ namespace ChessLogic
         private Chess(Board board) {
             _board = board;
             Fen = board.Fen;
-            moves = new Moves(_board);
+            moves = new Moves(_board); 
         }
 
         public Chess Move(string move) {
@@ -44,6 +44,17 @@ namespace ChessLogic
             var square = new Square(xy);
             var figure = _board.GetFigureAt(square);
             return figure == Figure.none ? '.' : (char)figure;
+        }
+
+        public IEnumerable<string> YieldValidMoves()
+        {
+            foreach (FigureOnSquare fs in _board.YieldFigures())
+                foreach (Square to in Square.YieldSquares())
+                {
+                    FigureMoving fm = new FigureMoving(fs, to);
+                    if (moves.CanMove(fm))
+                        yield return fm.ToString();
+                }
         }
 
         private void FindAllMoves() {
