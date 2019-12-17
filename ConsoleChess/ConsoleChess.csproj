@@ -54,6 +54,10 @@
       <Project>{c2247e45-984a-454c-aece-0942214777aa}</Project>
       <Name>ChessClient</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ChessLogic\ChessLogic.csproj">
+      <Project>{e991f6ec-3814-4746-a0fe-ed47847bb01e}</Project>
+      <Name>ChessLogic</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

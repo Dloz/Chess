@@ -21,6 +21,7 @@ namespace ChessClient
         {
             this.host = host;
             this.user = user;
+            GetCurrentGame();
         }
 
         public GameInfo GetCurrentGame()
@@ -49,12 +50,17 @@ namespace ChessClient
 
         private NameValueCollection ParseJson(string json)
         {
+            var dict = new Dictionary<string, string>();
             NameValueCollection list = new NameValueCollection();
             string pattern = @"""(\w+)\"":""?([^,""}]*)""?";
             foreach (Match match in Regex.Matches(json, pattern))
             {
                 if (match.Groups.Count == 3)
+                {
+                    dict[match.Groups[1].Value] = match.Groups[2].Value;
+
                     list[match.Groups[1].Value] = match.Groups[2].Value;
+                }
             }
             return list;
         }

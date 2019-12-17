@@ -27,8 +27,8 @@ namespace ChessLogic
         public Chess Move(string move) {
 
             var fm = new FigureMoving(move);
-            if (!moves.CanMove(fm))
-                return this; // Cannot move exceptions TODO
+            //if (!moves.CanMove(fm))
+            //    return this; // Cannot move exceptions TODO
             var nextBoard = _board.Move(fm);
             var nextChess = new Chess(nextBoard);
             return nextChess;

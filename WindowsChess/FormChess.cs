@@ -13,8 +13,8 @@ namespace WindowsChess
 {
     public partial class FormChess : Form
     {
-        public const string HOST = "localhost"; // TODO
-        public const string USER = "White";
+        public const string HOST = "http://localhost:55565/api/"; // TODO
+        public const string USER = "Games";
         const int SIZE = 50;
         Panel[,] map;
         Chess Chess;
@@ -149,7 +149,6 @@ namespace WindowsChess
                 int x = move[1] - 'a';
                 int y = move[2] - '1';
                 map[x, y].BackColor = GetMarkedColor(x, y);
-
             }
         }
 
@@ -169,6 +168,11 @@ namespace WindowsChess
         {
             return ((char)('a' + x)).ToString() + 
                    ((char)('1' + y)).ToString();
+        }
+
+        private void FormChess_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void Board_Paint(object sender, PaintEventArgs e)

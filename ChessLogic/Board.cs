@@ -14,13 +14,13 @@ namespace ChessLogic {
 
         public Board(string fen) {
             Fen = fen;
-            this.figures = new Figure[8,8];
+            figures = new Figure[8,8];
             Init();
         }
 
         private void Init() {
             var parts = Fen.Split();
-            if (parts.Length != 6) return;
+            //if (parts.Length != 7) return;
             InitFigures(parts[0]);
             moveColor = (parts[1] == "b") ? Color.black : Color.white;
             MoveNumber = int.Parse(parts[5]);
@@ -71,7 +71,6 @@ namespace ChessLogic {
         }
 
         public Board Move(FigureMoving figure) {
-
             var newBoard = new Board(Fen);
             newBoard.SetFigureAt(figure.From, Figure.none);
             newBoard.SetFigureAt(figure.To, figure.Promotion == Figure.none ? figure.Figure : figure.Promotion);
@@ -80,7 +79,6 @@ namespace ChessLogic {
             newBoard.moveColor = moveColor.FlipColor();
             newBoard.GenerateFen(); 
             return newBoard;
-
         }
 
         public IEnumerable<FigureOnSquare> YieldFigures() {
